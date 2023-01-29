@@ -1,0 +1,13 @@
+/.bundle/
+# bundler
+Gemfile.lock
+
+# rspec
+.rspec
+
+# ruby versions
+.ruby-version
+
+.idea/
+
+.DS_Store
