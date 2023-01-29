@@ -64,7 +64,7 @@ module Forecasting
       def self.modeled(opts = {})
         opts.each do |attribute_name, model|
           attribute_name_string = attribute_name.to_s
-          Forecasting::Models::ForecastRecord.send :define_method, attribute_name_string do
+          define_method(attribute_name_string) do
             @models[attribute_name_string] ||= model.new(@attributes[attribute_name_string] || {}, forecast_client: forecast_client)
           end
         end
