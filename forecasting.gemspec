@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jordan Owens"]
   spec.email         = ["jordan@neomindlabs.com"]
 
-  spec.summary       = %q{Ruby wrapper for the Forecast API}
-  spec.description   = %q{Interact with the Forecast API from your Ruby application}
+  spec.summary       = %q{Ruby wrapper for the Harvest Forecast API}
+  spec.description   = %q{Interact with the Harvest Forecast API from your Ruby application}
   spec.homepage      = "https://github.com/NeomindLabs/forecasting"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.6"
