@@ -1,5 +1,8 @@
 # Forecasting
 
+[![Gem Version](https://badge.fury.io/rb/forecasting.svg)](https://badge.fury.io/rb/forecasting)
+[![Tests](https://github.com/NeomindLabs/forecasting/actions/workflows/ruby.yml/badge.svg)](https://github.com/NeomindLabs/forecasting/actions/workflows/ruby.yml)
+
 A Ruby gem to interact with the Harvest Forecast API. Please note that there is currently [no official public API](https://help.getharvest.com/forecast/faqs/faq-list/api). This API client has been made by inspecting network requests using the Forecast website. This library is based on the excellent [Harvesting](https://github.com/fastruby/harvesting) gem.
 
 ## Installation
@@ -55,3 +58,11 @@ user = client.whoami
 user.id
 # => 212737
 ```
+
+## Releases
+
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
