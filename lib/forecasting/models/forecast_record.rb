@@ -43,7 +43,7 @@ module Forecasting
       def self.get(id, opts = {})
         client = opts[:forecast_client] || Forecasting::Client.new(**opts)
         self.new({ 'id' => id }, opts).tap do |record|
-          record.attributes = client.get(record.path)
+          record.attributes = client.get(record.path)[record.type]
         end
       end
     end
