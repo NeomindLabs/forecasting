@@ -13,4 +13,7 @@ module Forecasting
 
   class RateLimitExceeded < StandardError
   end
+
+  class MethodNotImplemented < StandardError
+  end
 end

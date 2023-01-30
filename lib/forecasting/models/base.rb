@@ -1,10 +1,14 @@
 module Forecasting
   module Models
     class Base
+      # @return [Forecasting::Client]
+      attr_reader :forecast_client
+
       # @return [Hash]
       attr_accessor :attributes
 
-      def initialize(attrs)
+      def initialize(attrs, opts = {})
+        @forecast_client = opts[:forecast_client] || Forecasting::Client.new(**opts)
         @attributes = attrs.dup
         @models = {}
       end
@@ -15,7 +19,6 @@ module Forecasting
       def to_hash
         @attributes
       end
-
 
       # Class method to define attribute methods for accessing attributes for
       # a record
@@ -55,7 +58,7 @@ module Forecasting
         opts.each do |attribute_name, model|
           attribute_name_string = attribute_name.to_s
           define_method(attribute_name_string) do
-            @models[attribute_name_string] ||= model.new(@attributes[attribute_name_string] || {})
+            @models[attribute_name_string] ||= model.new(@attributes[attribute_name_string] || {}, forecast_client: forecast_client)
           end
         end
       end

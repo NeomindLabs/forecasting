@@ -15,7 +15,7 @@ module Forecasting
                  :updated_by_id
 
       def path
-        @attributes['id'].nil? ? "milestones" : "milestones/#{@attributes['id']}"
+        @attributes['id'].nil? ? "assignments" : "assignments/#{@attributes['id']}"
       end
       
       def project

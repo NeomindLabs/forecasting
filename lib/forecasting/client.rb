@@ -17,12 +17,12 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Account]
   def account(id:)
-    Forecasting::Models::Account.new(get("accounts/#{id}")["account"])
+    Forecasting::Models::Account.new(get("accounts/#{id}")["account"], forecast_client: self)
   end
 
   # @return [Forecasting::Models::Assignment]
   def assignment(id:)
-    Forecasting::Models::Assignment.new(get("assignments/#{id}")["assignment"], forecast_client: self)
+    Forecasting::Models::Assignment.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Assignment>]
@@ -34,7 +34,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Client]
   def client(id:)
-    Forecasting::Models::Client.new(get("clients/#{id}")["client"], forecast_client: self)
+    Forecasting::Models::Client.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Client>]
@@ -46,7 +46,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::FtuxState]
   def ftux_state
-    Forecasting::Models::FtuxState.new(get("ftux_state")["ftux_state"])
+    Forecasting::Models::FtuxState.new(get("ftux_state")["ftux_state"], forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::FutureScheduledHours>]
@@ -59,7 +59,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Milestone]
   def milestone(id:)
-    Forecasting::Models::Milestone.new(get("milestones/#{id}")["milestone"], forecast_client: self)
+    Forecasting::Models::Milestone.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Milestone>]
@@ -71,7 +71,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Person]
   def person(id:)
-    Forecasting::Models::Person.new(get("people/#{id}")["person"], forecast_client: self)
+    Forecasting::Models::Person.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Person>]
@@ -83,7 +83,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Placeholder]
   def placeholder(id:)
-    Forecasting::Models::Placeholder.new(get("placeholders/#{id}")["placeholder"], forecast_client: self)
+    Forecasting::Models::Placeholder.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Placeholder>]
@@ -95,7 +95,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Projects]
   def project(id:)
-    Forecasting::Models::Project.new(get("projects/#{id}")["project"], forecast_client: self)
+    Forecasting::Models::Project.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Project>]
@@ -114,7 +114,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::RepeatedAssignmentSet]
   def repeated_assignment_set(id:)
-    Forecasting::Models::RepeatedAssignmentSet.new(get("repeated_assignment_sets/#{id}")["repeated_assignment_set"], forecast_client: self)
+    Forecasting::Models::RepeatedAssignmentSet.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::RepeatedAssignmentSet>]
@@ -126,7 +126,7 @@ class Forecasting::Client
 
   # @return [Forecasting::Models::Role]
   def role(id:)
-    Forecasting::Models::Role.new(get("roles/#{id}")["role"], forecast_client: self)
+    Forecasting::Models::Role.get(id, forecast_client: self)
   end
 
   # @return [Array<Forecasting::Models::Role>]
@@ -138,19 +138,19 @@ class Forecasting::Client
   
   # @return [Forecasting::Models::Subscription]
   def subscription
-    Forecasting::Models::Subscription.new(get("billing/subscription")["subscription"])
+    Forecasting::Models::Subscription.new(get("billing/subscription")["subscription"], forecast_client: self)
   end
 
   # @return [Forecasting::Models::UserConnection]
   def user_connections(opts = {})
     get("user_connections", opts)["user_connections"].map do |entry|
-      Forecasting::Models::UserConnection.new(entry)
+      Forecasting::Models::UserConnection.new(entry, forecast_client: self)
     end
   end
 
   # @return [Forecasting::Models::User]
   def whoami
-    Forecasting::Models::User.new(get("whoami")["current_user"])
+    Forecasting::Models::User.new(get("whoami")["current_user"], forecast_client: self)
   end
 
   # Creates an `entity` in your Harvest account.
